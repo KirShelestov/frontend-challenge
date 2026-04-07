@@ -74,7 +74,6 @@ body {
 }
 
 .page-content {
-    max-width: 1160px;
     margin: 32px auto;
     padding: 0 20px;
 }
@@ -140,17 +139,16 @@ body {
 
 .cat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
 }
 
 .cat-card {
     background: #f8fbff;
-    border-radius: 24px;
+
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 28px rgba(16, 42, 77, 0.08);
 }
 
 .cat-card__image-wrapper {
@@ -166,15 +164,40 @@ body {
 
 .cat-card__favourite-button {
     position: absolute;
-    top: 14px;
+    bottom: 14px;
     right: 14px;
-    padding: 10px 12px;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 999px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.65);
     box-shadow: 0 10px 20px rgba(16, 42, 77, 0.12);
-    background: rgba(255, 255, 255, 0.9);
-    color: #1d54c4;
+}
+
+.cat-card__favourite-button svg {
+    transition:
+        fill 0.2s ease,
+        transform 0.2s ease;
+    fill: none;
+}
+
+.cat-card__image-wrapper:hover .cat-card__favourite-button {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cat-card__favourite-button:hover svg,
+.cat-card__favourite-button--active svg {
+    fill: red;
 }
 
 .cat-card__body {
@@ -220,19 +243,19 @@ body {
 }
 
 .button--ghost {
-    background: rgba(255, 255, 255, 0.08);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: transparent;
+
+    border: none;
 }
 
 .button--primary {
-    background: #1d54c4;
-    color: #ffffff;
+    background: transparent;
+    border: none;
 }
 
 .button--danger {
-    background: #f54b4b;
-    color: #ffffff;
+    background: transparent;
+    border: none;
 }
 
 @media (max-width: 640px) {

@@ -1,6 +1,6 @@
 import React from "react";
 import type { CatImage } from "../lib/catStorage";
-
+import { Heart } from "lucide-react";
 interface CatCardProps {
     cat: CatImage;
     isFavourite: boolean;
@@ -21,7 +21,9 @@ const CatCard: React.FC<CatCardProps> = ({
             <div className="cat-card__image-wrapper">
                 <img className="cat-card__image" src={cat.url} alt={imageAlt} />
                 <button
-                    className={`cat-card__favourite-button ${buttonClassName}`}
+                    className={`cat-card__favourite-button ${buttonClassName} ${
+                        isFavourite ? "cat-card__favourite-button--active" : ""
+                    }`}
                     onClick={() => onAction(cat)}
                     type="button"
                     title={
@@ -30,7 +32,13 @@ const CatCard: React.FC<CatCardProps> = ({
                             : "Добавить в избранное"
                     }
                 >
-                    {isFavourite ? "♥" : "♡"}
+                    <Heart
+                        height={32}
+                        width={32}
+                        fill={isFavourite ? "red" : "none"}
+                        color="red"
+                        strokeWidth={2}
+                    />
                 </button>
             </div>
         </article>
