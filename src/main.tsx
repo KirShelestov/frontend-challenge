@@ -8,7 +8,7 @@ import Favourites from "./pages/Favourites.tsx";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
-        <BrowserRouter>
+        <BrowserRouter basename="/frontend-challenge">
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Main />} />
